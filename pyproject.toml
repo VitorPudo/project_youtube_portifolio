@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "youtube-dataglowup"
+version = "0.1.0"
+description = ""
+authors = ["Vitor Darci"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.109.2"
+google-api-python-client = "^2.116.0"
+google-auth-oauthlib = "^1.2.0"
+google-auth-httplib2 = "^0.2.0"
+ipython = "^8.21.0"
+pyarrow = "^15.0.0"
+pandas = "^2.2.0"
+openpyxl = "^3.1.2"
+taskipy = "^1.12.2"
+uvicorn = "^0.27.0.post1"
+boto3 = "1.19.8"
+python-dotenv = "^1.0.1"
+pytest = "^8.0.0"
+httpx = "^0.26.0"
+pytest-asyncio = "^0.23.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+
+run = "uvicorn backend.youtubeapi.start:app --reload" 
+test = "pytest -v test/test.py"
+kill = "kill -9 $(lsof -t -i:8000)"
